@@ -1,13 +1,18 @@
 module Carrier
-    STATUS = ['CREATED','ON_TRANSIT','DELIVERED', 'EXCEPTION']
-    @@carriers = []
+    STATUS = ['CREATED',
+              'ON_TRANSIT',
+              'DELIVERED',
+              'EXCEPTION']
 
-    def self.included(host_class)
-        @@carriers << host_class
+    @@carriers = {}
+
+    def self.register class_name, &class_ref
+        @@carriers[class_name] = Class.new do
+            instance_eval(&class_ref)
+        end
     end
 
-    def self.create(carrier_name, config)
-        carrier_class = @@carriers.find{|carrier| carrier.to_s.downcase == carrier_name.to_s.downcase}
-        carrier_class.new(config)
+    def self.connect carrier, config
+        @@carriers[carrier].connect(config)
     end
 end
