@@ -1,6 +1,7 @@
 require_relative 'lib/shipping'
 
-carrier = 'Fedex'
+carrier = 'fedex'
+code = '449044304137821'
 
 
-Shipment::track(carrier).execute
+Shipment::track(carrier, code).execute
