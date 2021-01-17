@@ -26,6 +26,12 @@ class Command
       # Hash expected from Proc execution
       @exec_data = cmd[:command].call(@params)
     end
+
+    return self
+  end
+
+  def data
+    @exec_data[:response]
   end
 
 end

@@ -4,6 +4,7 @@ require 'yaml'
 
 
 module Shipment
+
   def self.track(carrier, code)
     command = Command.new
 
@@ -24,7 +25,7 @@ module Shipment
     # Track shipment
     command.add params: {:code => code} do |params|
       # Track the shipment with a tracking number
-      puts Carrier.track(params[:code])
+      {:response => Carrier.track(params[:code])}
     end
 
     command

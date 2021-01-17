@@ -24,8 +24,7 @@ Carrier.register 'fedex' do
       tracking_info = results.first
 
       if DEBUG
-        puts "Shipment tracking info"
-        puts %Q{
+        puts %Q{[debug] Tracking Info
           Tracking number: #{tracking_info.tracking_number}"
           Event:
           Status: #{tracking_info.status} (#{tracking_info.events.first.description})

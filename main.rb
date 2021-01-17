@@ -4,4 +4,5 @@ carrier = 'fedex'
 code = '449044304137821'
 
 
-Shipment::track(carrier, code).execute
+response = Shipment::track(carrier, code).execute
+puts response.data
