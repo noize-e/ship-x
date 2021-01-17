@@ -8,7 +8,7 @@ ShipX is shipping API that connects you with multiple shipping carriers (such as
 - Custom carrier's API adapter interface.
 - Fedex API pre-configurated.
 
-## 2. Usage
+## 2. Install
 
 Run Bundler to install the Gems dependencies:
 
@@ -16,14 +16,14 @@ Run Bundler to install the Gems dependencies:
 $ bundle install
 ```
 
-### 2.1 Custom Carrier's Adapter
+## 3 Setup A New Carrier
 
-__Breakdown__
+### __3.1 Breakdown__
 
 1. Define the custom carrier's API settings in a YAML file.
 2. Register the custom carrier's adapter.
 
-#### 2.1.1 Config
+### __3.2 Config__
 
 - File path: __`config/carriers/{custom_carrier}.yaml`__
 
@@ -52,7 +52,7 @@ As it is shown in the previous example, the __`auth`__ setting expect the API's 
 | 2           | DELIVERED  |
 | 3           | EXCEPTION  |
 
-#### 2.1.2 Adapter
+### __3.3 Adapter__
 
 In a new file located at __`lib/carriers/{custom_carrier}.rb`__, register a custom carrier importing the module __`Carrier`__ located at __`lib/carrier.rb`__, then call the __`register`__ method, which receives 2 parameters:
 
@@ -67,7 +67,8 @@ In a new file located at __`lib/carriers/{custom_carrier}.rb`__, register a cust
 
         - param: __`code`__ (_`String`_): Tracking code reference.
 
-> __Note!__ Do not forget to import the custom carrier's gem.
+> __NOTE!__
+> Do not forget to import the custom carrier's gem.
 
 
 ```ruby
