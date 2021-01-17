@@ -42,15 +42,16 @@ shipping:
 
 #### 2.1.2 Adapter
 
-In a new file (located at __`lib/carriers/{custom_carrier}.rb`__) register a custom carrier importing the module; __Carrier__ (located at __`lib/carrier.rb`__), then call the __register__ method, which receives 2 parameters:
+In a new file located at __`lib/carriers/{custom_carrier}.rb`__, register a custom carrier importing the module __`Carrier`__ located at __`lib/carrier.rb`__, then call the __`register`__ method, which receives 2 parameters:
 
-1. __class_name (String)__: the custom carrier name.
-2. __class_ref (Proc)__: A Proc object 2 methods defined inside it's context:
+1. __`class_name`__ _(`String`)_: the custom carrier name.
+2. __`class_ref`__ _(`Proc`)_: A Proc object with 2 methods defined inside it's context:
 
-    2.1. __connect__: Here add the custom carrier's API connection functionality.
-      - param: __creds__ [_`Hash`_] - Hash reference from carrier configuration setting __`auth`__.
-    2.2. __track__: Here add the custom carrier's API tracking functionality.
-      - param: __code__ [_`String`_] - Tracking code reference.
+    2.1. __`connect`__: Here add the custom carrier's API connection functionality.
+        - param: __`creds`__ (_`Hash`_): Hash reference from carrier configuration setting __`auth`__.
+
+    2.2. __`track`__: Here add the custom carrier's API tracking functionality.
+        - param: __`code`__ (_`String`_): Tracking code reference.
 
 > __Note!__ Do not forget to import the custom carrier's gem.
 
