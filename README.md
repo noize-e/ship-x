@@ -24,14 +24,14 @@ Run Bundler to install the Gems dependencies:
 $ bundle install
 ```
 
-## 3 Setup A New Carrier
+## 3. Setup A New Carrier
 
-### __3.1 Breakdown__
+### __3.1. Breakdown__
 
 1. Define the custom carrier's API settings in a YAML file.
 2. Register the custom carrier's adapter.
 
-### __3.2 Config__
+### __3.2. Config__
 
 - File path: __`config/carriers/{custom_carrier}.yaml`__
 
@@ -60,7 +60,7 @@ As it is shown in the previous example, the __`auth`__ setting expect the API's 
 | 2           | DELIVERED  |
 | 3           | EXCEPTION  |
 
-### __3.3 Adapter__
+### __3.3. Adapter__
 
 In a new file located at __`lib/carriers/{custom_carrier}.rb`__, register a custom carrier importing the module __`Carrier`__ located at __`lib/carrier.rb`__, then call the __`register`__ method, which receives 2 parameters:
 
@@ -111,4 +111,45 @@ Carrier.register 'custom_carrier' do
   end
 
 end
+```
+
+## Usage
+
+To start the HTTP server execute:
+
+```bash
+$ ruby server.rb
+```
+
+To track a shipment perform a HTTP GET request to __`http://localhost:9292/{carrier_name}/{tracking_number}`__ URL. For example:
+
+```bash
+$ curl http://localhost:9292/fedex/449044304137821
+```
+
+The response should be:
+
+```console
+Status: CREATED
+```
+
+From the server side, it generates the following log:
+
+```console
+Tracking Request
+        Carrier: fedex
+        Tracking Number: 449044304137821
+[debug] Tracking Info
+          Tracking number: 449044304137821"
+          Event:
+          Status: Shipment information sent to FedEx (Shipment information sent to FedEx)
+          Status Code: OC
+          Ocurred at: 2013-12-30 13:24:00 -0500
+          Locale: US, 471307761
+          Exception:
+          Code:
+          Description:
+          Request:
+          Message: Request was successfully processed.
+          Code: 0
 ```
