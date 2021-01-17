@@ -2,6 +2,14 @@
 
 ShipX is shipping API that connects you with multiple shipping carriers (such as Fedex, among others) through one interface.
 
+- [ShipX - A Ruby Shipping API](#shipx---a-ruby-shipping-api)
+  * [1. Features](#1-features)
+  * [2. Install](#2-install)
+  * [3 Setup A New Carrier](#3-setup-a-new-carrier)
+    + [__3.1 Breakdown__](#--31-breakdown--)
+    + [__3.2 Config__](#--32-config--)
+    + [__3.3 Adapter__](#--33-adapter--)
+
 ## 1. Features
 
 - An asynchronous HTTP server.
