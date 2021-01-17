@@ -2,6 +2,7 @@ class Command
 
   def initialize
     @exec_data = {}
+    @params = {}
     @commands = []
   end
 
@@ -16,14 +17,14 @@ class Command
 
   def execute
     @commands.each do |cmd|
-      params = cmd[:params]
+      @params.merge!(cmd[:params])
 
-      if not @exec_data.empty?
-        params.merge!(@exec_data)
+      if not @exec_data.nil? and @exec_data.is_a?(Hash)
+        @params.merge!(@exec_data)
       end
 
       # Hash expected from Proc execution
-      @exec_data = cmd[:command].call(params)
+      @exec_data = cmd[:command].call(@params)
     end
   end
 

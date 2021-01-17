@@ -8,26 +8,23 @@ module Shipment
         command = Command.new
 
         # load carrier settings
-        command.add params: {:carrier => carrier} do |params|
+        command.add params: {:carrier_name => carrier} do |params|
             # load custom carrier settings from yaml file
-            config_path = "./config/carriers/#{params[:carrier]}.yml"
-            {
-                :carrier_name => carrier,
-                :config => YAML.load(File.open(config_path).read)
-            }
+            config_path = "./config/carriers/#{params[:carrier_name]}.yml"
+            {:config => YAML.load(File.open(config_path).read)}
         end
 
-        # Create carrier instance
+        # Register and connect to carrier's api
         command.add do |params|
             require "./lib/carriers/#{params[:carrier_name]}"
             # connect to carrier's api
-            {:carrier => Carrier.connect(params[:carrier_name], params[:config])}
+            Carrier.connect(params[:carrier_name], params[:config])
         end
 
+        # Track shipment
         command.add params: {:code => code} do |params|
-            # create from the given carrier name a new Carrier instance
-            carrier = params[:carrier]
-            puts carrier.track(params[:code])
+            # Track the shipment with a tracking number
+            puts Carrier.track(params[:code])
         end
 
         command
