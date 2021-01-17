@@ -6,18 +6,18 @@ auth:
   mode: "test"
 shipping:
   status_codes:
-    - OC: 1
-    - AP: 1
-    - PU: 1
-    - AR: 1
-    - FD: 1
-    - DL: 1
-    - DP: 1
-    - OD: 1
-    - DL: 1
-    - DE: 1
-    - SE: 1
-    - DE: 1
-    - DL: 1
-    - HL: 1
-    - CA: 1
+    OC: 0
+    AP: 1
+    PU: 1
+    AR: 1
+    FD: 1
+    DL: 1
+    DP: 1
+    OD: 1
+    DL: 1
+    DE: 1
+    SE: 1
+    DE: 1
+    DL: 1
+    HL: 1
+    CA: 1
