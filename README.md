@@ -5,10 +5,11 @@ ShipX is shipping API that connects you with multiple shipping carriers (such as
 - [ShipX - A Ruby Shipping API](#shipx---a-ruby-shipping-api)
   * [1. Features](#1-features)
   * [2. Install](#2-install)
-  * [3 Setup A New Carrier](#3-setup-a-new-carrier)
+  * [3. Setup A New Carrier](#3-setup-a-new-carrier)
     + [__3.1 Breakdown__](#--31-breakdown--)
     + [__3.2 Config__](#--32-config--)
     + [__3.3 Adapter__](#--33-adapter--)
+  * [4. Usage](#4-usage)
 
 ## 1. Features
 
@@ -113,7 +114,7 @@ Carrier.register 'custom_carrier' do
 end
 ```
 
-## Usage
+## 4. Usage
 
 To start the HTTP server execute:
 
